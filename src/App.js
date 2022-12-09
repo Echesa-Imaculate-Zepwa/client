@@ -6,8 +6,6 @@ function App() {
   const [cocktails, setCocktails] = useState([]);
   // const [loading, setLoading] = useState([])
 
-
-
   // useEffect(() => {
     // const fetchCocktailList = async () => {
         // const baseUrl = "/cocktails";
@@ -32,28 +30,22 @@ function App() {
   // }, []);
 
 
-  useEffect(() => {
-    fetch("/cocktails")
-    .then((response) => response.json())
-    .then((data) => setCocktails(data));
-  },[])
-  // console.log(cocktails)
-
-
-
-  // const fetchData = () => {
-    // return fetch("http:/localhost:3000/cocktails")
-          // .then((response) => response.json())
-          // .then((data) => setCocktails(data));
-  // }
   // useEffect(() => {
-    // fetchData();
+    // fetch("http:/localhost:3000/cocktails")
+    // .then((response) => response.json())
+    // .then((data) => setCocktails(data));
   // },[])
+  
 
-
-
- 
-
+  const fetchData = () => {
+    return fetch("/cocktails")
+      .then((response) => response.json())
+      .then((data) => setCocktails(data))
+  }
+  useEffect(() => {
+    fetchData();
+  },[])
+  console.log(cocktails)
 
 
   return (

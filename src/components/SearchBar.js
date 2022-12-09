@@ -32,3 +32,5 @@ function SearchBar({cocktails, setCocktails}) {
 };
 
 export default SearchBar;
+
+
