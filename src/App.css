@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+body{
+  background-color: rgb(247, 174, 225);}
+
+  nav{
+    padding-left: 3cm;
+    font-size: 3cm;
+    background-color: rgb(240, 187, 11);
+    font-family: 'Courier New', Courier, monospace;
+  }

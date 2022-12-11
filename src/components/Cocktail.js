@@ -2,7 +2,7 @@ import React from "react";
 
 
 const Cocktail = ({cocktails}) => {
-    console.log(cocktails)
+    // console.log(cocktails)
 
     return (
          <div className="card-container">
