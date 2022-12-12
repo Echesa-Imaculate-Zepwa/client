@@ -1,26 +1,49 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import CocktailList from "./CocktailList";
+import NewCocktailForm from "./NewCocktailForm";
+import SearchBar from "./SearchBar";
 
 
-const Cocktail = ({cocktails}) => {
-    // console.log(cocktails)
+function Cocktail() {
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  const demoData = [
+    {
+      "id": 1,
+      "name": "Blue margarita",
+      "image": "https://www.thecocktaildb.com/images/media/drink/bry4qh1582751040.jpg",
+      "price": "434",
+      "description": "this is the description"
+    }
+    
+  ]
+  
+  const [cocktails, setCocktails] = useState(demoData);
+  
+  useEffect(() => {
+    fetch("https://cocktail-shop-production.up.railway.app/cocktails")
+      .then((r) => r.json())
+     //.then((cocktailsArray) => {setCocktails(cocktailsArray);
+       .then((cocktailsArray) => {setCocktails(cocktailsArray);
+      });
+  }, []);
 
-    return (
-         <div className="card-container">
-            <h1>OUR DRINKS</h1>
-            <hr></hr>
-        {cocktails.map(cocktail => (
-          <div className="card">
-              <img src={cocktail.image} alt="our-drinks" className="card-image" /> 
-              <h1>{cocktail.name}</h1>
-              <p className="price">Price: {cocktail.price}</p>
-              <p className="category">Category: {cocktail.category}</p>
-              <hr></hr>
+  function handleAddCocktail(newCocktail) {
+    const updatedCocktailsArray = [...cocktails, newCocktail];
+    setCocktails(updatedCocktailsArray);
+  }
 
-          </div>
-           
-           ))}
-        </div>
-    );
+  const displayedCocktails = cocktails.filter((cocktail) => {
+    return cocktail.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+  return (
+    <main>
+      <NewCocktailForm onAddCocktail={handleAddCocktail} />
+      <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+      <CocktailList cocktails={displayedCocktails} />
+    </main>
+  );
 }
 
 export default Cocktail;
