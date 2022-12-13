@@ -15,7 +15,6 @@ function Cocktail() {
       "price": "434",
       "description": "this is the description"
     }
-    
   ]
   
   const [cocktails, setCocktails] = useState(demoData);
