@@ -20,7 +20,7 @@ function Cocktail() {
   const [cocktails, setCocktails] = useState(demoData);
   
   useEffect(() => {
-    fetch("https://cocktail-shop-production.up.railway.app/cocktails")
+    fetch("https://cocktail-shop-production-up-railway-app.glitch.me/data")
       .then((r) => r.json())
      //.then((cocktailsArray) => {setCocktails(cocktailsArray);
        .then((cocktailsArray) => {setCocktails(cocktailsArray);
